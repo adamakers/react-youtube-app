@@ -27,14 +27,34 @@ import React, {Component} from 'react';
 
 //es6 version
 class SearchBar extends Component { //<<<<<<es6 diff
+//how we define and initialize state in class based component
+  //all js classes have constructor
+  // when new instance is created this is called automatically.  Only one called automatically.
+  constructor(props) {
+    //needed
+    super(props);
+
+    this.state =  { term: '' };
+  }
+
   render() {
     return <input onChange={ event => console.log(event.target.value) } />;  //now using an arrow function
   }
-
+  //syntax for class method. declaring a fn without function keyword.
   // onInputChange(event.target.value) {
   //   console.log(event);
   // }
 }
 
-
+//need to export our class, fn, variable, etc... at the end of each compnent
 export default SearchBar;
+
+
+
+
+//STATE NOTES
+// state is a plain javascript object that records and keeps track & Reacts to user events 
+//each component class has its own state object
+//when interaction happens, component rerenders and all of its children rerender.
+//need to initialize the property state
+//set property state to a plain js object inside the classes constructor function
