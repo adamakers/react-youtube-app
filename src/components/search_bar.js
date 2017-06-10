@@ -34,6 +34,7 @@ class SearchBar extends Component { //<<<<<<es6 diff
     //needed
     super(props);
 
+    //will be value of input
     this.state =  { term: '' };
   }
 
