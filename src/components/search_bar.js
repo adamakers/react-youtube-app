@@ -38,8 +38,15 @@ class SearchBar extends Component { //<<<<<<es6 diff
   }
 
   render() {
-    //this.state.term = 'something'; //// << THIS IS BAD!
-    return <input onChange={ event => this.setState({term: event.target.value}) } />;  //now using an arrow function
+    //this.state.term = event.target.value // VERY BAD, DO NOT USE.  use setState() instead
+    return (
+      <div>
+        <input
+        value={this.state.term} //controlled component.  Updates when the state is updated.  the state is updated by the event. 
+        onChange={ event => this.setState({term: event.target.value}) } //put function in between {}.  when event is fired, the component will rerender. value is updated once state is changed
+        />
+      </div>
+    );
   }
   //syntax for class method. declaring a fn without function keyword.
   // onInputChange(event.target.value) {
