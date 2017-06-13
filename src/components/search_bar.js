@@ -31,15 +31,15 @@ class SearchBar extends Component { //<<<<<<es6 diff
   //all js classes have constructor
   // when new instance is created this is called automatically.  Only one called automatically.
   constructor(props) {
-    //needed
-    super(props);
+    super(props); //needed
 
     //will be value of input
     this.state =  { term: '' };
   }
 
   render() {
-    return <input onChange={ event => console.log(event.target.value) } />;  //now using an arrow function
+    //this.state.term = 'something'; //// << THIS IS BAD!
+    return <input onChange={ event => this.setState({term: event.target.value}) } />;  //now using an arrow function
   }
   //syntax for class method. declaring a fn without function keyword.
   // onInputChange(event.target.value) {
