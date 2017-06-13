@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
-//import your components below;
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 
 const API_KEY = 'AIzaSyBbFnzC_eIp7Zt6nBiO-IbccibelSAJiGQ';
 
@@ -15,7 +15,7 @@ class App extends Component {
 
     YTSearch({key: API_KEY, term: 'puppies'}, (videos) => {
       this.setState({ videos }); //es6 version of doing ({videos: videos}) only where key and value are same name.
-      console.log(data);
+      console.log(videos)
     });
   }
 
@@ -23,6 +23,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
