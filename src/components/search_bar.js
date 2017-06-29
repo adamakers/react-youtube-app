@@ -4,6 +4,7 @@
 //es6:
 import React, {Component} from 'react';
 //same as const Component = React.Component
+//use everytime you create a class based component and not a functional component
 //curly braces mean import React and set property React.Component to variable of just Component
 
 
@@ -37,13 +38,18 @@ class SearchBar extends Component { //<<<<<<es6 diff
     this.state =  { term: '' };
   }
 
+  onInputChange(term) {
+    this.setState({term});
+    this.props.onSearchTermChange(term);
+  }
+
   render() {
     //this.state.term = event.target.value // VERY BAD, DO NOT USE.  use setState() instead
     return (
-      <div>
+      <div className="search-bar">
         <input
-        value={this.state.term} //controlled component.  Updates when the state is updated.  the state is updated by the event. 
-        onChange={ event => this.setState({term: event.target.value}) } //put function in between {}.  when event is fired, the component will rerender. value is updated once state is changed
+          value={this.state.term} //controlled component.  Updates when the state is updated.  the state is updated by the event. 
+          onChange={ event => this.onInputChange(event.target.value) } //put function in between {}.  when event is fired, the component will rerender. value is updated once state is changed
         />
       </div>
     );
